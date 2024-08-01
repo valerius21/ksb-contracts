@@ -17,7 +17,10 @@ return new class extends Migration
             $table->string('cuid')->unique();
             $table->foreignIdFor(User::class);
             // root file
+            $table->json('root_file');
             // attachments
+            $table->json('attachments');
+
             $table->string('rechtsgebiet');
             $table->string('vertragsgruppe');
             $table->string('vertragstyp');

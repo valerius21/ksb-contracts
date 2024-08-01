@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Resources\ContractResource;
 use App\Models\Contract;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -14,6 +15,12 @@ Route::get('/', function () {
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
+});
+
+Route::get('/tokens/create', function (Request $request) {
+    $token = $request->user()->createToken('default');
+
+    return ['token' => $token->plainTextToken];
 });
 
 Route::get('/api/contracts', function () {
