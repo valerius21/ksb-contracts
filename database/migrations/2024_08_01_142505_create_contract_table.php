@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,10 +12,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contract', function (Blueprint $table) {
+        Schema::create('contracts', function (Blueprint $table) {
             $table->id();
-            $table->string('cuid');
-            $table->foreignIdFor(\App\Models\User::class);
+            $table->string('cuid')->unique();
+            $table->foreignIdFor(User::class);
             // root file
             // attachments
             $table->string('rechtsgebiet');
