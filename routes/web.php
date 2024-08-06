@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Resources\ContractResource;
 use App\Models\Contract;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -16,9 +17,18 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/api/contracts', function () {
-    return ContractResource::collection(Contract::all());
+Route::get('/search', function (Request $request) {
+    dd($request->all);
+    $search_query = $request->query;
+    if(empty($search_query)) {
+        return Contract::all();
+    }
+    return Contract::search($search_query)->get();
 });
+
+//Route::get('/api/contracts', function () {
+//    return ContractResource::collection(Contract::all());
+//});
 
 //Route::get('/dashboard', function () {
 //    return Inertia::render('Dashboard');
@@ -31,4 +41,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
-require __DIR__ . '/api.php';
+//require __DIR__ . '/api.php';

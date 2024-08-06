@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ContractSeeder extends Seeder
 {
-    private const POCKETBASE_URL = 'http://0.0.0.0:8090/api/collections/contracts/records?perPage=500';
+    private const POCKETBASE_URL = 'http://127.0.0.1:8090/api/collections/contracts/records?perPage=500';
 
     /**
      * Run the database seeds.
