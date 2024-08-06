@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Scout\Searchable;
 use Parables\Cuid\GeneratesCuid;
 
 class Contract extends Model
 {
     use GeneratesCuid;
+    use Searchable;
 
     protected $guarded = [];
 
@@ -17,6 +19,11 @@ class Contract extends Model
         'root_file' => 'array',
         'attachments' => 'array',
     ];
+
+    public function toSearchableArray(): array
+    {
+        return $this->toArray();
+    }
 
     public function user(): BelongsTo
     {
