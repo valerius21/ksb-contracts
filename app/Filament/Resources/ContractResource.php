@@ -17,7 +17,26 @@ class ContractResource extends Resource
 {
     protected static ?string $model = Contract::class;
 
+    protected static ?string $label = 'Vertrag';
+    protected static ?string $pluralLabel = 'Verträge';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $recordTitleAttribute = 'muster';
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return [
+            'muster',
+            'autor',
+            'rechtsgebiet',
+            'vertragsgruppe',
+            'vertragstyp',
+            'vertragsinhalt',
+            'anmerkungen_autor',
+            'geschaeftsbereich'
+        ];
+    }
 
     public static function form(Form $form): Form
     {
