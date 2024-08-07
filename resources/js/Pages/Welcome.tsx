@@ -14,11 +14,9 @@ export default function Welcome({auth, laravelVersion, phpVersion}: PageProps<{
     };
 
     return (
-        <>
+        <MainLayout>
             <Head title="Welcome"/>
-            <MainLayout>
-                <h1>Hallo</h1>
-            </MainLayout>
-        </>
+            <h1>Hallo</h1>
+        </MainLayout>
     );
 }
